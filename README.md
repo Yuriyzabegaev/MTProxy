@@ -105,5 +105,12 @@ systemctl enable MTProxy.service
 ```
 
 ## Docker image
-Telegram is also providing [official Docker image](https://hub.docker.com/r/telegrammessenger/proxy/).
-Note: the image is outdated.
+```
+docker build -t mtproxy .
+
+docker save mtproxy -o mtproxy.tar
+
+docker load < mtproxy.tar
+
+docker run -d --name mtproxy -p<YOUR PORT>:<YOUR PORT> -e SECRET=<YOUR SECRET> -e TAG=<YOUR TAG> -e PORT=<YOUR PORT> mtproxy
+```
